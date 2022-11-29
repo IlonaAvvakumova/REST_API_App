@@ -3,17 +3,15 @@ package com.crud.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Data
+
 @Entity
-@Table(name = "users", schema="flyway_db")
-public class User {
+@Data
+@Table(name = "files", schema="flyway_db")
+public class FileDB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    List<Event> events;
-
+    String filePath;
 }

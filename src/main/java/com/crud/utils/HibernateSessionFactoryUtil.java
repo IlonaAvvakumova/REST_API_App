@@ -1,12 +1,9 @@
 package com.crud.utils;
 
 
-import com.crud.model.Label;
-import com.crud.model.Post;
-import com.crud.model.Writer;
-import com.crud.repository.Hibernate.HiberLabelRepository;
-import com.crud.repository.Hibernate.HiberPostRepository;
-import com.crud.repository.Hibernate.HiberWriterRepository;
+import com.crud.model.Event;
+import com.crud.model.FileDB;
+import com.crud.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -20,9 +17,9 @@ public class HibernateSessionFactoryUtil {
         if (sessionFactory == null) {
             try {
                 sessionFactory = new Configuration()
-                        .configure("hibernate.cfg.xml").addAnnotatedClass(Label.class)
-                        .addAnnotatedClass(Post.class)
-                        .addAnnotatedClass(Writer.class).buildSessionFactory();
+                        .configure("hibernate.cfg.xml").addAnnotatedClass(FileDB.class)
+                        .addAnnotatedClass(Event.class)
+                        .addAnnotatedClass(User.class).buildSessionFactory();
 
                           } catch (Exception e) {
                 System.out.println("Исключение!" + e);

@@ -1,7 +1,7 @@
 package com.crud.service;
 
-import com.crud.model.Writer;
-import com.crud.repository.WriterRepository;
+import com.crud.model.oldModel.Writer;
+import com.crud.repository.oldRepo.WriterRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

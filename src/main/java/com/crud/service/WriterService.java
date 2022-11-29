@@ -1,9 +1,9 @@
 package com.crud.service;
 
 
-import com.crud.model.Writer;
-import com.crud.repository.Hibernate.HiberWriterRepository;
-import com.crud.repository.WriterRepository;
+import com.crud.model.oldModel.Writer;
+import com.crud.repository.oldRepo.Hibernate.HiberWriterRepository;
+import com.crud.repository.oldRepo.WriterRepository;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.crud.controller;
+package com.crud.controller.oldController;
 
-import com.crud.model.Label;
+import com.crud.model.oldModel.Label;
 import com.crud.service.LabelService;
 
 import java.util.List;

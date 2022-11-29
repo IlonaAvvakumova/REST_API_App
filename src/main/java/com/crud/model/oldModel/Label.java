@@ -1,10 +1,10 @@
-package com.crud.model;
+package com.crud.model.oldModel;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table (name ="labels", schema="flyway_db")
+/*@Entity
+@Table (name ="labels", schema="flyway_db")*/
 public class Label {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

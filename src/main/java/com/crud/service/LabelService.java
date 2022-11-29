@@ -1,8 +1,8 @@
 package com.crud.service;
 
-import com.crud.model.Label;
-import com.crud.repository.Hibernate.HiberLabelRepository;
-import com.crud.repository.LabelRepository;
+import com.crud.model.oldModel.Label;
+import com.crud.repository.oldRepo.Hibernate.HiberLabelRepository;
+import com.crud.repository.oldRepo.LabelRepository;
 
 import java.util.List;
 

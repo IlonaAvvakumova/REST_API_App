@@ -1,31 +1,22 @@
 
-create TABLE labels(
+ create TABLE files(
+    id  SERIAL PRIMARY KEY ,
+    name VARCHAR(50),
+    filePath VARCHAR(150)
+       );
+
+
+create TABLE users(
     id  SERIAL PRIMARY KEY ,
     name VARCHAR(50)
-       );
-
- create TABLE writers(
-    id  SERIAL PRIMARY KEY ,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50)
-       );
-
-
-create TABLE posts(
-    id  SERIAL PRIMARY KEY ,
-    content VARCHAR(50),
-    created BIGINT,
-    updated BIGINT,
-    status VARCHAR(50),
-    writer_id INT,
-    FOREIGN KEY (writer_id)  REFERENCES writers (id)
     );
 
-create TABLE posts_labels(
-post_id INT,
-labellist_id INT,
-   FOREIGN KEY (post_id)  REFERENCES posts (id),
-   FOREIGN KEY (labellist_id)  REFERENCES labels (id));
+create TABLE events(
+user_id INT,
+file_id INT,
+   FOREIGN KEY (user_id)  REFERENCES users (id),
+   FOREIGN KEY (file_id)  REFERENCES files (id)
+   );
 
  /*  create TABLE writers_posts(
 writer_id INT,

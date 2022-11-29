@@ -1,7 +1,7 @@
-package com.crud.repository.Hibernate;
+package com.crud.repository.oldRepo.Hibernate;
 
-import com.crud.model.Writer;
-import com.crud.repository.WriterRepository;
+import com.crud.model.oldModel.Writer;
+import com.crud.repository.oldRepo.WriterRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

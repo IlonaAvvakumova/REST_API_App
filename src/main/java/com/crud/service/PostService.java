@@ -1,8 +1,8 @@
 package com.crud.service;
 
-import com.crud.model.Post;
-import com.crud.repository.Hibernate.HiberPostRepository;
-import com.crud.repository.PostRepository;
+import com.crud.model.oldModel.Post;
+import com.crud.repository.oldRepo.Hibernate.HiberPostRepository;
+import com.crud.repository.oldRepo.PostRepository;
 
 import java.util.List;
 

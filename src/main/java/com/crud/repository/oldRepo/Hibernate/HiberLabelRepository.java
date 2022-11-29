@@ -1,59 +1,57 @@
-package com.crud.repository.Hibernate;
+package com.crud.repository.oldRepo.Hibernate;
 
-import com.crud.model.Post;
-import com.crud.model.PostStatus;
-import com.crud.repository.PostRepository;
+import com.crud.model.oldModel.Label;
+import com.crud.repository.oldRepo.LabelRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class HiberPostRepository implements PostRepository {
+public class HiberLabelRepository implements LabelRepository {
     @Override
-    public List<Post> getAll() {
+    public List<Label> getAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<Post> from_posts  =  (List<Post>)  session.createQuery("From Post").list();
+        List<Label> from_labels = (List<Label>) session.createQuery("From Label").list();
         session.close();
-        return from_posts;
+        return from_labels;
     }
 
     @Override
-    public Post getById(Integer id) {
+    public Label getById(Integer id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Post post =  session.get(Post.class, id);
+        Label label = session.get(Label.class, id);
         session.close();
-        return post;
+        return label;
     }
 
     @Override
-    public Post create(Post post) {
+    public Label create(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.save(post);
+        session.save(label);
         tx1.commit();
         session.close();
-        return post;
+        return label;
     }
 
     @Override
-    public Post update(Post post) {
+    public Label update(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(post);
+        session.update(label);
         tx1.commit();
         session.close();
-        return post;
+        return label;
     }
 
     @Override
     public void deleteById(Integer id) {
-        Post post = new Post();
-        post.setId(id);
-        post.setStatus(PostStatus.DELETED);
+        Label label = new Label();
+        label.setId(id);
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(post);
+        session.delete(label);
         tx1.commit();
         session.close();
 

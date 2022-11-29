@@ -1,10 +1,12 @@
-package com.crud.model;
+package com.crud.model.oldModel;
+
+import com.crud.model.oldModel.Post;
 
 import java.util.List;
 import javax.persistence.*;
 
-@Entity
-@Table(name = "writers", schema="flyway_db")
+/*@Entity
+@Table(name = "writers", schema="flyway_db")*/
 public class Writer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

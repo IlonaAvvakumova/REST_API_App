@@ -1,9 +1,9 @@
-package com.crud.controller;
+package com.crud.controller.oldController;
 
-import com.crud.model.Label;
-import com.crud.model.Post;
-import com.crud.model.PostStatus;
-import com.crud.model.Writer;
+import com.crud.model.oldModel.Label;
+import com.crud.model.oldModel.Post;
+import com.crud.model.oldModel.PostStatus;
+import com.crud.model.oldModel.Writer;
 import com.crud.service.PostService;
 import com.crud.service.WriterService;
 
