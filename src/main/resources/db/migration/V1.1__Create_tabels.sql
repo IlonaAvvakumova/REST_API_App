@@ -11,12 +11,13 @@ create TABLE users(
     name VARCHAR(50)
     );
 
-create TABLE events(
+/*create TABLE events(
+id SERIAL PRIMARY KEY ,
 user_id INT,
 file_id INT,
    FOREIGN KEY (user_id)  REFERENCES users (id),
    FOREIGN KEY (file_id)  REFERENCES files (id)
-   );
+   );*/
 
  /*  create TABLE writers_posts(
 writer_id INT,

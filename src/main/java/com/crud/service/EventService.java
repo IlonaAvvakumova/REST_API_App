@@ -1,13 +1,14 @@
 package com.crud.service;
 
 import com.crud.model.Event;
-import com.crud.repository.HibernateNew.Interface.EventRepository;
+import com.crud.repository.HiberEventRepository;
+import com.crud.repository.Interface.EventRepository;
 
 import java.util.List;
 
 public class EventService {
 
-    EventRepository eventRepository;
+    EventRepository eventRepository = new HiberEventRepository();
     public EventService() {
     }
 

@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "files", schema="flyway_db")
+
 public class FileDB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

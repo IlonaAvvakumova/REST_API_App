@@ -3,8 +3,7 @@ package com.crud.Servlets;
 
 import com.crud.model.FileDB;
 import com.crud.model.oldModel.Label;
-import com.crud.repository.HibernateNew.HiberFileRepository;
-import com.crud.service.LabelService;
+import com.crud.repository.HiberFileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
@@ -67,8 +66,14 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+       /* PrintWriter printWriter = resp.getWriter();
+        printWriter.write("poka");
+        LabelService labelService = new LabelService();
+        Label label = new Label();
+        Label label1 = new Label();*/
 
-        String description = req.getParameter("loading");
+
+        String description = req.getParameter("description");
         Part filePart = req.getPart("filePath");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         InputStream fileContent = filePart.getInputStream();
@@ -80,5 +85,32 @@ public class Servlet extends HttpServlet {
         File file = new File(uploads, fileName);
         InputStream input = filePart.getInputStream();
         Files.copy(input, file.toPath());
+
+
+       /* String createLabel = req.getParameter("createName");
+        if (req.getQueryString().equals("createName=" + createLabel)) {
+            label.setName(createLabel);
+            labelService.create(label);
+            return;
+        }*/
+
+        String updateLabel = req.getParameter("updateName");
+        String updateLabel2 = req.getParameter("updateId");
+/*
+        if (req.getQueryString().equals("updateName=" + updateLabel + "&updateId=" + updateLabel2) ||
+                req.getQueryString().equals("updateId=" + updateLabel2 + "&updateName=" + updateLabel)) {
+            label1.setId(Integer.parseInt(updateLabel2));
+            label1.setName(updateLabel);
+            System.out.println(label1);
+            labelService.update(label1);
+            return;
+        }
+
+        String d = req.getParameter("deleteId");
+        Integer deleteId = Integer.parseInt(d);
+        if (req.getQueryString().equals("deleteId=" + deleteId)) {
+            labelService.deleteById(deleteId);
+            return;
+        }*/
     }
 }

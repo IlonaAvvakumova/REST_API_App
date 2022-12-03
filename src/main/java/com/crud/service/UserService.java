@@ -1,13 +1,13 @@
 package com.crud.service;
 
 import com.crud.model.User;
-import com.crud.repository.HibernateNew.HiberUserRepository;
+import com.crud.repository.HiberUserRepository;
 
 import java.util.List;
 
 public class UserService {
 
-    HiberUserRepository hiberUserRepository;
+    HiberUserRepository hiberUserRepository = new HiberUserRepository();
 
     public UserService() {
     }

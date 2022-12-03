@@ -1,4 +1,4 @@
-package com.crud.repository.HibernateNew.Interface;
+package com.crud.repository.Interface;
 
 import com.crud.model.User;
 

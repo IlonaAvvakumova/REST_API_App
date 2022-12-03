@@ -1,8 +1,8 @@
-package com.crud.repository.HibernateNew;
+package com.crud.repository;
 
 import com.crud.model.FileDB;
 import com.crud.model.oldModel.Label;
-import com.crud.repository.HibernateNew.Interface.FileRepository;
+import com.crud.repository.Interface.FileRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,11 +13,11 @@ public class HiberFileRepository implements FileRepository {
 
     @Override
     public List<FileDB> getAll() {
-        List<FileDB> from_files;
+        List<FileDB> files;
         try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
-         from_files  = (List<FileDB>) session.createQuery("From FileDB").list();
+         files  = (List<FileDB>) session.createQuery("From FileDB").list();
         }
-        return from_files;
+        return files;
     }
 
     @Override

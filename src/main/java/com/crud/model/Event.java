@@ -12,12 +12,19 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     User user;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn(name = "file_id")
     FileDB fileDB;
 
-
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", user=" + user.getName() +
+                ", fileDB=" + fileDB.getName() +
+                '}';
+    }
 }
