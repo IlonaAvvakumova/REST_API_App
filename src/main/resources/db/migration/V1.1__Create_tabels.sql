@@ -10,17 +10,14 @@ create TABLE users(
     id  SERIAL PRIMARY KEY ,
     name VARCHAR(50)
     );
+/*CREATE SEQUENCE users_id_seq START WITH 1 INCREMENT BY 1;*/
 
-/*create TABLE events(
+create TABLE events(
 id SERIAL PRIMARY KEY ,
 user_id INT,
 file_id INT,
-   FOREIGN KEY (user_id)  REFERENCES users (id),
-   FOREIGN KEY (file_id)  REFERENCES files (id)
-   );*/
+   FOREIGN KEY (user_id)  REFERENCES users (id) ON DELETE CASCADE,
+   FOREIGN KEY (file_id)  REFERENCES files (id) ON DELETE CASCADE
+   );
 
- /*  create TABLE writers_posts(
-writer_id INT,
-posts_id INT,
-   FOREIGN KEY (writer_id)  REFERENCES writers (id),
-   FOREIGN KEY (posts_id)  REFERENCES posts (id));*/
+

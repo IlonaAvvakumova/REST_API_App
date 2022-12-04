@@ -1,15 +1,15 @@
 package com.crud.repository.Interface;
 
-import com.crud.model.FileDB;
+import com.crud.model.FileEntity;
 
 import java.util.List;
 
 public interface FileRepository {
-    List<FileDB> getAll();
+    List<FileEntity> getAll();
 
-    FileDB getById(Integer id);
+    FileEntity getById(Integer id);
 
-    FileDB create(FileDB t);
+    FileEntity create(FileEntity t);
 
      void deleteById(Integer id);
 }

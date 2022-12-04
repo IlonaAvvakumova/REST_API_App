@@ -1,7 +1,6 @@
 package com.crud.repository;
 
-import com.crud.model.FileDB;
-import com.crud.model.oldModel.Label;
+import com.crud.model.FileEntity;
 import com.crud.repository.Interface.FileRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -12,39 +11,39 @@ import java.util.List;
 public class HiberFileRepository implements FileRepository {
 
     @Override
-    public List<FileDB> getAll() {
-        List<FileDB> files;
+    public List<FileEntity> getAll() {
+        List<FileEntity> files;
         try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
-         files  = (List<FileDB>) session.createQuery("From FileDB").list();
+         files  = (List<FileEntity>) session.createQuery("From FileEntity").list();
         }
         return files;
     }
 
     @Override
-    public FileDB getById(Integer id) {
-        FileDB fileDB;
+    public FileEntity getById(Integer id) {
+        FileEntity fileEntity;
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
-            fileDB = session.get(FileDB.class, id);
+            fileEntity = session.get(FileEntity.class, id);
         }
-        return fileDB;
+        return fileEntity;
     }
 
     @Override
-    public FileDB create(FileDB fileDB) {
+    public FileEntity create(FileEntity fileEntity) {
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()
         ) {
             Transaction tx1 = session.beginTransaction();
-            session.save(fileDB);
+            session.save(fileEntity);
             tx1.commit();
 
         }
-        return fileDB;
+        return fileEntity;
 
     }
 
     @Override
     public void deleteById(Integer id) {
-        FileDB file = new FileDB();
+        FileEntity file = new FileEntity();
         file.setId(id);
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx1 = session.beginTransaction();

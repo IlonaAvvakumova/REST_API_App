@@ -1,6 +1,6 @@
 package com.crud.service;
 
-import com.crud.model.FileDB;
+import com.crud.model.FileEntity;
 import com.crud.repository.HiberFileRepository;
 
 import java.util.List;
@@ -17,19 +17,19 @@ public class FileService {
     }
 
 
-    public List<FileDB> getAll() {
+    public List<FileEntity> getAll() {
         return hiberFileRepository.getAll();
     }
 
 
-    public FileDB getById(Integer id) {
+    public FileEntity getById(Integer id) {
         return hiberFileRepository.getById(id);
     }
 
 
-    public FileDB create(FileDB fileDB) {
+    public FileEntity create(FileEntity fileEntity) {
 
-        return hiberFileRepository.create(fileDB);
+        return hiberFileRepository.create(fileEntity);
 
     }
 

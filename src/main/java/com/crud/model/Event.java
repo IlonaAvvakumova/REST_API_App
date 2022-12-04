@@ -1,7 +1,7 @@
 package com.crud.model;
 
 import lombok.Data;
-
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 
 
@@ -14,17 +14,19 @@ public class Event {
     Integer id;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+
+    @JsonManagedReference
     User user;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn(name = "file_id")
-    FileDB fileDB;
+    FileEntity fileEntity;
 
     @Override
     public String toString() {
         return "Event{" +
                 "id=" + id +
                 ", user=" + user.getName() +
-                ", fileDB=" + fileDB.getName() +
+                ", fileEntity=" + fileEntity.getName() +
                 '}';
     }
 }
