@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 class UserServiceTest {
 
@@ -19,8 +18,8 @@ class UserServiceTest {
     void getAll() {
         List<User> userList = new ArrayList();
         when(hiberUserRepository.getAll()).thenReturn(userList);
-        List<User> users = userService.getAll();
-        assertEquals(userList, users);
+        List<User> userEntities = userService.getAll();
+        assertEquals(userList, userEntities);
     }
     @Test
     void getById() {
@@ -40,9 +39,9 @@ class UserServiceTest {
         when(hiberUserRepository.create(user)).thenReturn(new User());
         assertEquals(new User(), userService.create(user));
     }
-    @Test
-    void deleteById() {
+    //@Test
+   /* void deleteById() {
         UserService userService1 = Mockito.mock(UserService.class);
         doNothing().when(userService1).deleteById(1);
-    }
+    }*/
 }

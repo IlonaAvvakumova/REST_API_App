@@ -1,4 +1,4 @@
-package com.crud.repository.Interface;
+package com.crud.repository.Hibernate;
 
 import com.crud.model.FileEntity;
 

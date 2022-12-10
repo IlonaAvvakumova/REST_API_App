@@ -22,8 +22,8 @@ class EventServiceTest {
     void getAll() {
         List<Event> eventList = new ArrayList();
         when(hiberEventRepository.getAll()).thenReturn(eventList);
-        List<Event> events = eventService.getAll();
-        assertEquals(eventList, events);
+        List<Event> eventEntities = eventService.getAll();
+        assertEquals(eventList, eventEntities);
     }
     @Test
     void getById() {

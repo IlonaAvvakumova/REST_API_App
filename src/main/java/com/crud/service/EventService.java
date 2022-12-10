@@ -2,7 +2,7 @@ package com.crud.service;
 
 import com.crud.model.Event;
 import com.crud.repository.HiberEventRepository;
-import com.crud.repository.Interface.EventRepository;
+import com.crud.repository.Hibernate.EventRepository;
 
 import java.util.List;
 

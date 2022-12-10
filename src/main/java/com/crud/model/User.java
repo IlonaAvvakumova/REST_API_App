@@ -11,15 +11,12 @@ import java.util.List;
 
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "usersIdSeq", sequenceName = "users_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usersIdSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
 
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Event.class/*error id*/)
-    List<Event> events;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Event.class)
+    List<Event> eventEntities;
 
 }

@@ -15,7 +15,7 @@ public class Event {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
 
-    @JsonManagedReference
+    @JsonBackReference
     User user;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn(name = "file_id")

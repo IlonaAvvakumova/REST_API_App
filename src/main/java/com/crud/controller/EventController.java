@@ -29,30 +29,33 @@ public class EventController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter printWriter = resp.getWriter();
         ObjectMapper objectMapper = new ObjectMapper();
-        if (req.getRequestURI().equals("/REST_API_App/api/v1/events")) {
-            List<Event> events = eventService.getAll();
-            for (Event u : events
-            ) {
-                String jsonString = objectMapper.writeValueAsString(u);
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-                printWriter.print(jsonString);
-                printWriter.flush();
-            }
-            return;
-        }
         int index = req.getRequestURI().lastIndexOf("/");
-        String s = req.getRequestURI().substring(index + 1);
-        Integer id = Integer.parseInt(s);
-        if (req.getRequestURI().equals("/REST_API_App/api/v1/events/" + id)) {
-            Event byId = eventService.getById(id);
-            String jsonString = objectMapper.writeValueAsString(byId);
+        String idAsString = req.getRequestURI().substring(index + 1);
+
+        String jsonString;
+        if(idAsString !=null && !idAsString.isEmpty()){
+            Integer id = Integer.parseInt(idAsString);
+            Event event = eventService.getById(id);
+             jsonString = objectMapper.writeValueAsString(event);
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             printWriter.print(jsonString);
             printWriter.flush();
-            return;
+
+        }else {
+            List<Event> eventEntities = eventService.getAll();
+            for (Event u : eventEntities
+            ) {
+               jsonString   = objectMapper.writeValueAsString(u);
+               resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                printWriter.print(jsonString);
+                printWriter.flush();
+            }
+
         }
+
+
         printWriter.close();
     }
 }

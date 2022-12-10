@@ -1,7 +1,7 @@
 package com.crud.repository;
 
 import com.crud.model.FileEntity;
-import com.crud.repository.Interface.FileRepository;
+import com.crud.repository.Hibernate.FileRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

@@ -47,7 +47,7 @@ public class FileController extends HttpServlet {
             file.setFilePath(getServletConfig().getInitParameter("upload.location"));
             FileEntity fileEntity = fileService.create(file);
             UserService userService = new UserService();
-            List<Event> events = new ArrayList<>();
+            List<Event> eventEntities = new ArrayList<>();
             User user = new User();
             Enumeration s2 = req.getHeaders("user_id");
             while (s2.hasMoreElements()) {
@@ -56,7 +56,7 @@ public class FileController extends HttpServlet {
                 Event event = new Event();
                 event.setFileEntity(fileEntity);
                 event.setUser(user);
-                events.add(event);
+                eventEntities.add(event);
                 try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()
                 ) {
                     Transaction tx1 = session.beginTransaction();
@@ -64,15 +64,25 @@ public class FileController extends HttpServlet {
                     tx1.commit();
                 }
             }
-            user.setEvents(events);
+            user.setEventEntities(eventEntities);
             userService.update(user);
-            return;
+
         }
     }
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter printWriter = resp.getWriter();
         ObjectMapper objectMapper = new ObjectMapper();
-        if (req.getRequestURI().equals("/REST_API_App/api/v1/files")) {
+        int index = req.getRequestURI().lastIndexOf("/");
+        String idAsString = req.getRequestURI().substring(index + 1);
+        if(idAsString !=null && !idAsString.isEmpty()){
+            Integer id = Integer.parseInt(idAsString);
+            FileEntity byId = fileService.getById(id);
+            String jsonString = objectMapper.writeValueAsString(byId);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            printWriter.print(jsonString);
+            printWriter.flush();
+        }else{
             List<FileEntity> files = fileService.getAll();
             for (FileEntity u : files
             ) {
@@ -82,30 +92,17 @@ public class FileController extends HttpServlet {
                 printWriter.print(jsonString);
                 printWriter.flush();
             }
-            return;
-        }
-        int index = req.getRequestURI().lastIndexOf("/");
-        String s = req.getRequestURI().substring(index + 1);
-        Integer id = Integer.parseInt(s);
-        if (req.getRequestURI().equals("/REST_API_App/api/v1/files/" + id)) {
-            FileEntity byId = fileService.getById(id);
-            String jsonString = objectMapper.writeValueAsString(byId);
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            printWriter.print(jsonString);
-            printWriter.flush();
-            return;
         }
         printWriter.close();
     }
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
         int index = req.getRequestURI().lastIndexOf("/");
-        String s = req.getRequestURI().substring(index + 1);
-        Integer id = Integer.parseInt(s);
-        if (req.getRequestURI().equals("/REST_API_App/api/v1/files/delete/" + id)) {
+        String idAsString = req.getRequestURI().substring(index + 1);
+        if(idAsString !=null && !idAsString.isEmpty()){
+            Integer id = Integer.parseInt(idAsString);
             fileService.deleteById(id);
-            return;
+
         }
     }
     @Override

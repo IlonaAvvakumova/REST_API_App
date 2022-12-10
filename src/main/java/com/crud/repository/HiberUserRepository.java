@@ -1,7 +1,7 @@
 package com.crud.repository;
 
 import com.crud.model.User;
-import com.crud.repository.Interface.UserRepository;
+import com.crud.repository.Hibernate.UserRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,11 +11,11 @@ public class HiberUserRepository implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        List<User> users;
+        List<User> userEntities;
         try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
-            users  = (List<User>) session.createQuery("From User").list();
+            userEntities = (List<User>) session.createQuery("From User").list();
         }
-        return users;
+        return userEntities;
     }
 
     @Override

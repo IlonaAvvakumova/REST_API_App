@@ -2,7 +2,7 @@ package com.crud.repository;
 
 
 import com.crud.model.Event;
-import com.crud.repository.Interface.EventRepository;
+import com.crud.repository.Hibernate.EventRepository;
 import com.crud.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 
@@ -12,11 +12,11 @@ public class HiberEventRepository implements EventRepository {
 
     @Override
     public List<Event> getAll() {
-        List<Event> events;
+        List<Event> eventEntities;
         try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
-            events  = (List<Event>) session.createQuery("From Event").list();
+            eventEntities = (List<Event>) session.createQuery("From Event").list();
         }
-        return events;
+        return eventEntities;
     }
 
     @Override
